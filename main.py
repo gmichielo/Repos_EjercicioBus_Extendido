@@ -31,3 +31,25 @@ def creacion_buses(cantidad, capacidades, destinos):
 print("Bienvind@ a viajes terretres F&G\n ¿Que desea hacer?")
 print(mostrar_menu_acciones())
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# hola
