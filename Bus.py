@@ -37,6 +37,7 @@ class Bus:
             return None, f"Error, el bus {self.__bus_id} esta lleno. No hay asientos libres."
         else:
             self.__billetes.append(billete)
+            
     def DevolverBilletes(self, cliente):
         for b in self.__billetes:
             c = b.GetCliente()
@@ -44,6 +45,7 @@ class Bus:
                 self.__billetes.remove(b)
                 return f"Billete {b.GetTicketId()} de {c.GetNombre()} {c.GetApellido()} devuelto."
         return f"Error, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus."
+    
     def Estado(self):
         return f"Bus {self.__bus_id}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}
 
