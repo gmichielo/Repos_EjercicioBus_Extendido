@@ -6,3 +6,5 @@ class Cliente:
         self._nombre = nombre    
     def SetApellido(self, apellido):
         self._apellido = apellido
+    def GetNombre(self):
+        return self._nombre
