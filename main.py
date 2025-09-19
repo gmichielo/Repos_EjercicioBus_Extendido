@@ -16,9 +16,18 @@ def mostrar_menu_buses(buses):
     index = 1
     menu = ""
     for bus in buses:
-        menu += f"{index}- {bus.GetBusID}\n"
+        menu += f"{index}- {bus.GetDestino}\n"
     return menu
 
+def creacion_buses(cantidad, capacidades, destinos):
+    contador = 1
+    indice = 0
+    while contador <= cantidad:
+        bus = Bus("1",capacidades[indice],destinos[indice])
+        buses.append(bus)
+        contador += 1
+        indice += 1
+        
 print("Bienvind@ a viajes terretres F&G\n ¿Que desea hacer?")
 print(mostrar_menu_acciones())
 

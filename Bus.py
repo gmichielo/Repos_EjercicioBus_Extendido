@@ -47,7 +47,7 @@ class Bus:
         return f"Error, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus."
     
     def Estado(self):
-        return f"Bus {self.__bus_id}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}
+        return f"Bus {self.__bus_id}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}"
 
 
         
