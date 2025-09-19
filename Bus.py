@@ -1,3 +1,5 @@
+from Billete import Billete
+
 class Bus:
     def __init__(self, bus_id, capacidad, destino):
         self.__bus_id = bus_id
@@ -43,7 +45,7 @@ class Bus:
             c = b.GetCliente()
             if c.GetNombre() == cliente.GetNombre() and c.GetApellido() == cliente.GetApellido():
                 self.__billetes.remove(b)
-                return f"Billete {b.GetTicketId()} de {c.GetNombre()} {c.GetApellido()} devuelto."
+                return f"Billete de {c.GetNombre()} {c.GetApellido()} devuelto."
         return f"Error, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus."
     
     def Estado(self):
