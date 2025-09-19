@@ -31,13 +31,16 @@ class Bus:
         else:
             self.__billetes.append(billete)
     def DevolverBilletes(self, cliente):
-        for b in self._billetes:
+        for b in self.__billetes:
             c = b.GetCliente()
             if c.GetNombre() == cliente.GetNombre() and c.GetApellido() == cliente.GetApellido():
-                self._billetes.remove(b)
+                self.__billetes.remove(b)
                 return f"Billete {b.GetTicketId()} de {c.GetNombre()} {c.GetApellido()} devuelto."
         return f"Error, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus."
-    
+    def Estado(self):
+        return f"Bus {self.__bus_id}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}
+
+
         
 
 
