@@ -2,6 +2,8 @@ from Bus import Bus
 from Cliente import Cliente
 from Billete import Billete
 
+capacidades_buses = [1,2,3,4]
+destinos_buses = [1,2,3,4]
 buses = []
 accion_usuario = 0
 
@@ -27,29 +29,9 @@ def creacion_buses(cantidad, capacidades, destinos):
         buses.append(bus)
         contador += 1
         indice += 1
-        
+
 print("Bienvind@ a viajes terretres F&G\n ¿Que desea hacer?")
 print(mostrar_menu_acciones())
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# hola
