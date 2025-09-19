@@ -1,7 +1,7 @@
 from Cliente import Cliente
 
 class Billete:
-    def __init__(self, bus, cliente, num_billete):
+    def __init__(self, bus, cliente):
         self.__busId = bus
         self.__cliente = cliente
         self.__num_billete = num_billete
