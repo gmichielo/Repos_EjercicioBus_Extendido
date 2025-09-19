@@ -2,24 +2,24 @@ from Cliente import Cliente
 
 class Billete:
     def __init__(self, bus, cliente, num_billete):
-        self._busId = bus
-        self._cliente = cliente
-        self._num_billete = num_billete
+        self.__busId = bus
+        self.__cliente = cliente
+        self.__num_billete = num_billete
     
     def GetBus(self):
-        return self._busId
+        return self.__busId
     
     def GetCliente(self):
-        return self._cliente
+        return self.__cliente
     
     def GetNum_Billete(self):
-        return self._num_billete
+        return self.__num_billete
     
     def SetBus(self, bus):
-        self._busId = bus
+        self.__busId = bus
 
     def SetCliente(self, cliente):
-        self._cliente = cliente
+        self.__cliente = cliente
     
     def SetNum_Billete(self, num):
-        self._num_billete = num
+        self.__num_billete = num

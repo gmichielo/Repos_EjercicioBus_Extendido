@@ -1,14 +1,18 @@
 class Bus:
-    def __init__(self, bus_id, capacidad):
+    def __init__(self, bus_id, capacidad, destino):
         self.__bus_id = bus_id
         self.__capacidad = capacidad
         self.__billetes = []
+        self.__destino = destino
         
     def SetBusId(self, bus_id):
         self.__bus_id = bus_id
         
     def SetCapacidad(self, capacidad):
         self.__capacidad = capacidad
+
+    def SetDestino(self, destino):
+        self.__destino = destino
         
     def GetBusID(self):
         return self.__bus_id
@@ -18,6 +22,9 @@ class Bus:
     
     def GetBilletes(self):
         return self.__billetes
+    
+    def GetDestino(self):
+        return self.__destino
     
     def GetVendidos(self):
         return len(self.__billetes)
