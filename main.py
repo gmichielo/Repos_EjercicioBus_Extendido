@@ -41,7 +41,7 @@ def creacion_billete(bus, cliente):
 
 creacion_buses(4, capacidades_buses, destinos_buses)
 
-print("Bienvind@ a viajes terretres F&G\n ¿Que desea hacer?")
+print("Bienvenid@ a viajes terrestres F&G\n ¿Que desea hacer?")
 
 while accion_usuario != 0:
     print(mostrar_menu_acciones())
@@ -60,7 +60,7 @@ while accion_usuario != 0:
         print("Introduzca su nombre y apellido")
         cliente = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
         billete_nuevo =  creacion_billete(bus_seleccionado, cliente)
-        print(bus_seleccionado.VenderBillete(billete_nuevo))
+        print(bus_seleccionado.VenderBilletes(billete_nuevo))
 
         
 

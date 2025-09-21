@@ -39,7 +39,7 @@ class Bus:
             return None, f"Error, el bus {self.__bus_id} esta lleno. No hay asientos libres."
         else:
             self.__billetes.append(billete)
-            return f"Tu compra se hizo con exito: bus {self._bus_id}, con destino {self._destino}"          
+            return f"Tu compra se hizo con exito: Bus #{self.__bus_id}, con destino {self.__destino}"  
             
     def DevolverBilletes(self, cliente):
         for b in self.__billetes:
