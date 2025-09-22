@@ -61,6 +61,8 @@ while accion_usuario != 0:
         cliente = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
         billete_nuevo =  creacion_billete(bus_seleccionado, cliente)
         print(bus_seleccionado.VenderBillete(billete_nuevo))
+    if accion_usuario == 2:
+         
 
         
 
