@@ -46,7 +46,7 @@ class Bus:
             c = b.GetCliente()
             if c.GetNombre() == cliente.GetNombre() and c.GetApellido() == cliente.GetApellido():
                 self.__billetes.remove(b)
-                return f"\033[32mBillete de {c.GetNombre()} {c.GetApellido()} id #{c.GetNum_Billete()} devuelto."
+                return f"\033[32mBillete de {c.GetNombre()} {c.GetApellido()} id #{b.GetNum_Billete()} devuelto.\033[0m\n"
         return f"\033[31mError, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus.\033[0m\n"
     
     def Estado(self):

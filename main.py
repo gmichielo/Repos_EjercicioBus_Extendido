@@ -65,6 +65,26 @@ while accion_usuario != 0:
 
         billetes_vendidos += 1
         bus_seleccionado = None
+    elif accion_usuario == 2:
+        print("\033[33m" + mostrar_menu_buses(buses) + "\033[0m")
+        accion_bus = int(input(" Elige el bus donde quieres devolver: "))
+
+        while accion_bus > len(buses) or accion_bus <= 0:
+            accion_bus = int(input("\033[31mEse bus no esta en sistema, Elige otro: \033[0m"))
+
+        bus_seleccionado = buses[accion_bus - 1]
+
+        if bus_seleccionado.GetVendidos() == 0:
+            print("\033[31mNo hay billetes vendidos en este bus.\033[0m\n")
+            bus_seleccionado = None
+            continue
+
+        print("\nIntroduzca el nombre y apellido del titular del billete a devolver")
+        cliente_tmp = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
+
+        print(bus_seleccionado.DevolverBilletes(cliente_tmp))
+
+        bus_seleccionado = None
 
     elif accion_usuario == 3:
         print(mostrar_menu_buses(buses))
