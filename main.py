@@ -8,12 +8,13 @@ buses = []
 accion_usuario = 1
 accion_bus = 0
 bus_seleccionado = ""
+billetes_vendidos = 1
 
 def mostrar_menu_acciones():
-    menu = "1.- Venta de billetes.\n" \
+    menu = "\033[33m1.- Venta de billetes.\n" \
     + "2.- Devolución de billetes.\n" \
     + "3.- Estado de la venta.\n" \
-    + "0.- Salir."
+    + "0.- Salir.\033[0m\n"
     return menu
 
 def mostrar_menu_buses(buses):
@@ -36,31 +37,47 @@ def creacion_cliente(nombre, apellido):
     return cliente
 
 def creacion_billete(bus, cliente):
-    billete = Billete(bus, cliente, bus.GetBusID())
+    billete = Billete(billetes_vendidos, cliente, bus.GetBusID())
     return billete
 
 creacion_buses(4, capacidades_buses, destinos_buses)
 
-print("Bienvenid@ a viajes terrestres F&G\n ¿Que desea hacer?")
+print("\033[36mBienvenid@ a viajes terrestres F&G\n ¿Que desea hacer?\033[0m\n")
 
 while accion_usuario != 0:
     print(mostrar_menu_acciones())
-    accion_usuario = int(input("Elige una opción: "))
+    accion_usuario = int(input(" Elige una opción: "))
 
     if accion_usuario == 1: 
-        print(mostrar_menu_buses(buses))
-        accion_bus = int(input("Elige un bus: "))
+        print("\033[33m"+ mostrar_menu_buses(buses) + "\033[0m")
+        accion_bus = int(input(" Elige un bus: "))
 
         while accion_bus > len(buses) or accion_bus <= 0:
-            accion_bus = int(input("Ese bus no esta en sistema, Elige uno nuevo: "))
+            accion_bus = int(input("\033[31mEse bus no esta en sistema, Elige uno nuevo: \033[0m"))
         
         bus_seleccionado = buses[accion_bus - 1]
 
         #Revisar
-        print("Introduzca su nombre y apellido")
+        print("\nIntroduzca su nombre y apellido")
         cliente = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
         billete_nuevo =  creacion_billete(bus_seleccionado, cliente)
         print(bus_seleccionado.VenderBilletes(billete_nuevo))
+
+        billetes_vendidos += 1
+        bus_seleccionado = None
+
+    elif accion_usuario == 3:
+        print(mostrar_menu_buses(buses))
+        accion_bus = int(input(" Elige el bus que deseas revisar: "))
+
+        while accion_bus > len(buses) or accion_bus <= 0:
+            accion_bus = int(input("\033[31mEse bus no esta en sistema, Elige otro: \033[0m"))
+        
+        bus_seleccionado = buses[accion_bus - 1]
+
+        print(bus_seleccionado.Estado())
+
+print("\033[36mHasta luego muchas gracias por escogernos\033[0m")
 
         
 

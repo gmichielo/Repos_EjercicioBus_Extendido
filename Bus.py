@@ -36,21 +36,21 @@ class Bus:
     
     def VenderBilletes(self, billete):
         if self.GetLibres() <= 0:
-            return None, f"Error, el bus {self.__bus_id} esta lleno. No hay asientos libres."
+            return None, f"\033[31mError, el bus {self.__bus_id} esta lleno. No hay asientos libres.\033[0m\n"
         else:
             self.__billetes.append(billete)
-            return f"Tu compra se hizo con exito: Bus #{self.__bus_id}, con destino {self.__destino}"  
+            return f"\033[32mTu compra se hizo con exito: Bus #{self.__bus_id}, con destino {self.__destino}\033[0m\n"  
             
     def DevolverBilletes(self, cliente):
         for b in self.__billetes:
             c = b.GetCliente()
             if c.GetNombre() == cliente.GetNombre() and c.GetApellido() == cliente.GetApellido():
                 self.__billetes.remove(b)
-                return f"Billete de {c.GetNombre()} {c.GetApellido()} devuelto."
-        return f"Error, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus."
+                return f"\033[32mBillete de {c.GetNombre()} {c.GetApellido()} id #{c.GetNum_Billete()} devuelto."
+        return f"\033[31mError, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus.\033[0m\n"
     
     def Estado(self):
-        return f"Bus {self.__bus_id}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}"
+        return f"\033[35mBus {self.__bus_id} Destino: {self.__destino}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}\033[0m\n"
 
 
         
