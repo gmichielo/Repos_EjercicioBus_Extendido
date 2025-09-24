@@ -44,7 +44,7 @@ class Bus:
     def DevolverBilletes(self, cliente):
         for b in self.__billetes:
             c = b.GetCliente()
-            if c.GetNombre() == cliente.GetNombre() and c.GetApellido() == cliente.GetApellido():
+            if (c.GetNombre().strip().lower() == cliente.GetNombre().strip().lower() and c.GetApellido().strip().lower() == cliente.GetApellido().strip().lower()):
                 self.__billetes.remove(b)
                 return f"\033[32mBillete de {c.GetNombre()} {c.GetApellido()} id #{b.GetNum_Billete()} devuelto.\033[0m\n"
         return f"\033[31mError, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus.\033[0m\n"
