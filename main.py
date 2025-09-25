@@ -36,8 +36,8 @@ def creacion_cliente(nombre, apellido):
     cliente = Cliente(nombre,apellido)
     return cliente
 
-def creacion_billete(bus, cliente):
-    billete = Billete(billetes_vendidos, cliente, bus.GetBusID())
+def creacion_billete(num_billete, bus, cliente):
+    billete = Billete(bus, cliente,num_billete)
     return billete
 
 creacion_buses(4, capacidades_buses, destinos_buses)
@@ -60,11 +60,12 @@ while accion_usuario != 0:
         #Revisar
         print("\nIntroduzca su nombre y apellido")
         cliente = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
-        billete_nuevo =  creacion_billete(bus_seleccionado, cliente)
+        billete_nuevo =  creacion_billete(billetes_vendidos, bus_seleccionado, cliente)
         print(bus_seleccionado.VenderBilletes(billete_nuevo))
 
         billetes_vendidos += 1
         bus_seleccionado = None
+
     elif accion_usuario == 2:
         print("\033[33m" + mostrar_menu_buses(buses) + "\033[0m")
         accion_bus = int(input(" Elige el bus donde quieres devolver: "))
@@ -81,8 +82,9 @@ while accion_usuario != 0:
 
         print("\nIntroduzca el nombre y apellido del titular del billete a devolver")
         cliente_tmp = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
+        cliente_num_billete = input("Introduzca el numero de tu billete: ")
 
-        print(bus_seleccionado.DevolverBilletes(cliente_tmp))
+        print(bus_seleccionado.DevolverBilletes(cliente_tmp, cliente_num_billete))
 
         bus_seleccionado = None
 
