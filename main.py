@@ -115,12 +115,12 @@ while accion_usuario != 0:
 
     elif accion_usuario == 4:
 
-        destino_bus = input("Introduce el destino del bus: ")
+        destino_bus = input("\nIntroduce el destino del bus: ")
         capacidad_bus = input("Introduce la capacidad del bus: ")
         
         while destino_bus == "" or capacidad_bus.isdigit() == False or int(capacidad_bus) <= 0:
             print("\033[31mVuelve a introducir los datos, hay un problema \033[0m")
-            destino_bus = input("Introduce el destino del bus: ")
+            destino_bus = input("\nIntroduce el destino del bus: ")
             capacidad_bus = input("Introduce la capacidad del bus: ")
             
         if capacidad_bus.isdigit() == True and destinos_buses != "": 
