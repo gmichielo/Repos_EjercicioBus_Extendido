@@ -41,12 +41,17 @@ class Bus:
             self.__billetes.append(billete)
             return f"\033[32mTu compra se hizo con exito: Bus #{self.__bus_id}, con destino {self.__destino}\033[0m\n"  
             
-    def DevolverBilletes(self, cliente):
+    def DevolverBilletes(self, cliente, num_billete):
         for b in self.__billetes:
             c = b.GetCliente()
-            if (c.GetNombre().strip().lower() == cliente.GetNombre().strip().lower() and c.GetApellido().strip().lower() == cliente.GetApellido().strip().lower()):
+            mismo_cliente = (
+                c.GetNombre().strip().lower() == cliente.GetNombre().strip().lower() and
+                c.GetApellido().strip().lower() == cliente.GetApellido().strip().lower()
+            )
+            if b.GetNum_Billete() == num_billete and mismo_cliente:
                 self.__billetes.remove(b)
-                return f"\033[32mBillete de {c.GetNombre()} {c.GetApellido()} id #{b.GetNum_Billete()} devuelto.\033[0m\n"
+                return f"Billete {num_billete} de {c.GetNombre()} {c.GetApellido()} devuelto en bus {self.__bus_id}."
+            
         return f"\033[31mError, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus.\033[0m\n"
     
     def Estado(self):
