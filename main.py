@@ -75,12 +75,12 @@ while accion_usuario != 0:
     elif accion_usuario == 2:
         print("\033[33m" + mostrar_menu_buses(buses) + "\033[0m")
         
-        accion_bus = int(input(" Elige el bus donde quieres devolver: "))
+        accion_bus = input(" Elige el bus donde quieres devolver: ")
 
-        while accion_bus > len(buses) or accion_bus <= 0:
-            accion_bus = int(input("\033[31mEse bus no esta en sistema, Elige otro: \033[0m"))
+        while (accion_bus.isdigit() == False) or (int(accion_bus) > len(buses)) or (int(accion_bus) <= 0):
+            accion_bus = input("\033[31mEse bus no esta en sistema, Elige otro: \033[0m")
 
-        bus_seleccionado = buses[accion_bus - 1]
+        bus_seleccionado = buses[int(accion_bus) - 1]
 
         if bus_seleccionado.GetVendidos() == 0:
             print("\033[31mNo hay billetes vendidos en este bus.\033[0m\n")
@@ -97,12 +97,12 @@ while accion_usuario != 0:
 
     elif accion_usuario == 3:
         print(mostrar_menu_buses(buses))
-        accion_bus = int(input(" Elige el bus que deseas revisar: "))
+        accion_bus = input(" Elige el bus que deseas revisar: ")
 
-        while accion_bus > len(buses) or accion_bus <= 0:
-            accion_bus = int(input("\033[31mEse bus no esta en sistema, Elige otro: \033[0m"))
+        while (accion_bus.isdigit() == False) or (int(accion_bus) > len(buses)) or (int(accion_bus) <= 0):
+            accion_bus = input("\033[31mEse bus no esta en sistema, Elige otro: \033[0m")
         
-        bus_seleccionado = buses[accion_bus - 1]
+        bus_seleccionado = buses[int(accion_bus) - 1]
 
         print(bus_seleccionado.Estado())
 
