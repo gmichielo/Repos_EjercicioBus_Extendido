@@ -141,11 +141,3 @@ while accion_usuario != 0:
 
 
 print("\033[36mHasta luego muchas gracias por escogernos\033[0m")
-
-        
-
-            
-
-
-   
-
