@@ -52,7 +52,7 @@ class Bus:
                 self.__billetes.remove(b)
                 return f"Billete {num_billete} de {c.GetNombre()} {c.GetApellido()} devuelto en bus {self.__bus_id}."
             
-        return f"\033[31mError, el cliente {cliente.GetNombre()} {cliente.GetApellido()} no tiene billetes en este bus.\033[0m\n"
+        return f"\033[31mError, el billete {num_billete} a nombre {cliente.GetNombre()} {cliente.GetApellido()} no se encontro en ese bus. Revise los datos.\033[0m\n"
     
     def Estado(self):
         return f"\033[35mBus {self.__bus_id} Destino: {self.__destino}\n Capacidad: {self.__capacidad}\n Vendidos: {len(self.__billetes)}\n Libres: {self.__capacidad - len(self.__billetes)}\033[0m\n"

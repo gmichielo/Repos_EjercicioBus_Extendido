@@ -46,18 +46,24 @@ print("\033[36mBienvenid@ a viajes terrestres F&G\n ¿Que desea hacer?\033[0m\n"
 
 while accion_usuario != 0:
     print(mostrar_menu_acciones())
-    accion_usuario = int(input(" Elige una opción: "))
+    try:
+        accion_usuario = int(input(" Elige una opción: ").strip())
+    except ValueError:
+        print("\033[31mOpción inválida, escribe un número.\033[0m")
+        continue
+    if accion_usuario > 3 or accion_usuario < 0:
+        print("\033[31mOpción inválida, seleccione un numero del menu.\033[0m")
+        continue
 
     if accion_usuario == 1: 
         print("\033[33m"+ mostrar_menu_buses(buses) + "\033[0m")
-        accion_bus = int(input(" Elige un bus: "))
+        accion_bus = input(" Elige un bus: ")
 
-        while accion_bus > len(buses) or accion_bus <= 0:
-            accion_bus = int(input("\033[31mEse bus no esta en sistema, Elige uno nuevo: \033[0m"))
+        while (accion_bus.isdigit() == False) or (int(accion_bus) > len(buses)) or (int(accion_bus) <= 0) :
+            accion_bus = input("\033[31mEse bus no esta en sistema, Elige uno nuevo: \033[0m")
         
-        bus_seleccionado = buses[accion_bus - 1]
+        bus_seleccionado = buses[int(accion_bus) - 1]
 
-        #Revisar
         print("\nIntroduzca su nombre y apellido")
         cliente = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
         billete_nuevo =  creacion_billete(billetes_vendidos, bus_seleccionado, cliente)
@@ -68,6 +74,7 @@ while accion_usuario != 0:
 
     elif accion_usuario == 2:
         print("\033[33m" + mostrar_menu_buses(buses) + "\033[0m")
+        
         accion_bus = int(input(" Elige el bus donde quieres devolver: "))
 
         while accion_bus > len(buses) or accion_bus <= 0:
