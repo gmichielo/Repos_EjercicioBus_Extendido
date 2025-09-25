@@ -14,13 +14,14 @@ def mostrar_menu_acciones():
     menu = "\033[33m1.- Venta de billetes.\n" \
     + "2.- Devolución de billetes.\n" \
     + "3.- Estado de la venta.\n" \
+    + "4.- Añadir bus.\n" \
     + "0.- Salir.\033[0m\n"
     return menu
 
 def mostrar_menu_buses(buses):
     menu = ""
     for bus in buses:
-        menu += f"{bus.GetBusID()}- {bus.GetDestino()}\n"
+        menu += f"{bus.GetBusID()}-{bus.GetDestino()}\n"
     return menu
 
 def creacion_buses(cantidad, capacidades, destinos):
@@ -40,6 +41,12 @@ def creacion_billete(num_billete, bus, cliente):
     billete = Billete(bus, cliente,num_billete)
     return billete
 
+def creacion_nuevo_bus(buses, capacidad, destino):
+    bus = Bus(len(buses) + 1, int(capacidad), f"Barcelona-{destino}")
+    buses.append(bus)
+    
+
+
 creacion_buses(4, capacidades_buses, destinos_buses)
 
 print("\033[36mBienvenid@ a viajes terrestres F&G\n ¿Que desea hacer?\033[0m\n")
@@ -51,7 +58,7 @@ while accion_usuario != 0:
     except ValueError:
         print("\033[31mOpción inválida, escribe un número.\033[0m")
         continue
-    if accion_usuario > 3 or accion_usuario < 0:
+    if accion_usuario > 4 or accion_usuario < 0:
         print("\033[31mOpción inválida, seleccione un numero del menu.\033[0m")
         continue
 
@@ -105,6 +112,21 @@ while accion_usuario != 0:
         bus_seleccionado = buses[int(accion_bus) - 1]
 
         print(bus_seleccionado.Estado())
+
+    elif accion_usuario == 4:
+
+        destino_bus = input("Introduce el destino del bus: ")
+        capacidad_bus = input("Introduce la capacidad del bus: ")
+        
+        while destino_bus == "" or capacidad_bus.isdigit() == False or int(capacidad_bus) <= 0:
+            print("\033[31mVuelve a introducir los datos, hay un problema \033[0m")
+            destino_bus = input("Introduce el destino del bus: ")
+            capacidad_bus = input("Introduce la capacidad del bus: ")
+            
+        if capacidad_bus.isdigit() == True and destinos_buses != "": 
+            creacion_nuevo_bus(buses, capacidad_bus, destino_bus)
+            print("\033[32mSe creo el bus correctamente \033[0m")
+
 
 print("\033[36mHasta luego muchas gracias por escogernos\033[0m")
 
