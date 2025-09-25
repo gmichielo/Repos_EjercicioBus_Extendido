@@ -50,7 +50,7 @@ class Bus:
             )
             if b.GetNum_Billete() == num_billete and mismo_cliente:
                 self.__billetes.remove(b)
-                return f"Billete {num_billete} de {c.GetNombre()} {c.GetApellido()} devuelto en bus {self.__bus_id}."
+                return f"\033[32mBillete {num_billete} de {c.GetNombre()} {c.GetApellido()} devuelto en bus {self.__bus_id}.\033[0m"
             
         return f"\033[31mError, el billete {num_billete} a nombre {cliente.GetNombre()} {cliente.GetApellido()} no se encontro en ese bus. Revise los datos.\033[0m\n"
     

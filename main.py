@@ -2,8 +2,6 @@ from Bus import Bus
 from Cliente import Cliente
 from Billete import Billete
 
-capacidades_buses = [50,20,35,30]
-destinos_buses = ["Barcelona-Madrid","Barcelona-Valencia","Barcelona-Sevilla","Barcelona-Zaragoza"]
 buses = []
 accion_usuario = 1
 accion_bus = 0
@@ -23,15 +21,6 @@ def mostrar_menu_buses(buses):
     for bus in buses:
         menu += f"{bus.GetBusID()}-{bus.GetDestino()}\n"
     return menu
-
-def creacion_buses(cantidad, capacidades, destinos):
-    contador = 1
-    indice = 0
-    while contador <= cantidad:
-        bus = Bus(contador,capacidades[indice],destinos[indice])
-        buses.append(bus)
-        contador += 1
-        indice += 1
     
 def creacion_cliente(nombre, apellido):
     cliente = Cliente(nombre,apellido)
@@ -45,10 +34,6 @@ def creacion_nuevo_bus(buses, capacidad, destino):
     bus = Bus(len(buses) + 1, int(capacidad), f"Barcelona-{destino}")
     buses.append(bus)
     
-
-
-creacion_buses(4, capacidades_buses, destinos_buses)
-
 print("\033[36mBienvenid@ a viajes terrestres F&G\n ¿Que desea hacer?\033[0m\n")
 
 while accion_usuario != 0:
@@ -64,6 +49,9 @@ while accion_usuario != 0:
 
     if accion_usuario == 1: 
         print("\033[33m"+ mostrar_menu_buses(buses) + "\033[0m")
+        if len(buses) == 0:
+            print('\033[31mNo hay buses en el sistema. Añade un bus.\033[0m')
+            continue
         accion_bus = input(" Elige un bus: ")
 
         while (accion_bus.isdigit() == False) or (int(accion_bus) > len(buses)) or (int(accion_bus) <= 0) :
@@ -81,6 +69,9 @@ while accion_usuario != 0:
 
     elif accion_usuario == 2:
         print("\033[33m" + mostrar_menu_buses(buses) + "\033[0m")
+        if len(buses) == 0:
+            print('\033[31mNo hay buses en el sistema. Añade un bus.\033[0m')
+            continue        
         
         accion_bus = input(" Elige el bus donde quieres devolver: ")
 
@@ -104,6 +95,9 @@ while accion_usuario != 0:
 
     elif accion_usuario == 3:
         print(mostrar_menu_buses(buses))
+        if len(buses) == 0:
+            print('\033[31mNo hay buses en el sistema. Añade un bus.\033[0m')
+            continue
         accion_bus = input(" Elige el bus que deseas revisar: ")
 
         while (accion_bus.isdigit() == False) or (int(accion_bus) > len(buses)) or (int(accion_bus) <= 0):
@@ -116,14 +110,27 @@ while accion_usuario != 0:
     elif accion_usuario == 4:
 
         destino_bus = input("\nIntroduce el destino del bus: ")
-        capacidad_bus = input("Introduce la capacidad del bus: ")
-        
-        while destino_bus == "" or capacidad_bus.isdigit() == False or int(capacidad_bus) <= 0:
-            print("\033[31mVuelve a introducir los datos, hay un problema \033[0m")
+        while destino_bus == "":
+            print("\033[31mTienes que poner un destino \033[0m")
             destino_bus = input("\nIntroduce el destino del bus: ")
-            capacidad_bus = input("Introduce la capacidad del bus: ")
             
-        if capacidad_bus.isdigit() == True and destinos_buses != "": 
+        capacidad_bus = input("Introduce la capacidad del bus: ")
+        control = 0
+        
+        while control == 0:
+            if capacidad_bus.isdigit() == False:
+                print('\033[31mTiene que ser un numero\033[0m')
+                capacidad_bus = input("Introduce la capacidad del bus: ")
+            elif int(capacidad_bus) <= 0:
+                print('\033[31mTiene que ser mayor a zero.\033[0m')
+                capacidad_bus = input("Introduce la capacidad del bus: ")
+            elif int(capacidad_bus) > 50:
+                print("\033[31mCapacidad demasiado grande.\033[0m")
+                capacidad_bus = input("Introduce la capacidad del bus: ")
+            else:
+                control = 1
+            
+        if capacidad_bus.isdigit() == True and destino_bus != "": 
             creacion_nuevo_bus(buses, capacidad_bus, destino_bus)
             print("\033[32mSe creo el bus correctamente \033[0m")
 
