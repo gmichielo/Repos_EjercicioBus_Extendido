@@ -1,0 +1,17 @@
+# Carpetas de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+.env/
+
+# Configuración de VSCode / PyCharm
+.vscode/
+.idea/
+
+# Archivos del sistema (Mac / Windows)
+.DS_Store
+Thumbs.db
