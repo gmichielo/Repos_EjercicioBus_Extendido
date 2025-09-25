@@ -82,7 +82,7 @@ while accion_usuario != 0:
 
         print("\nIntroduzca el nombre y apellido del titular del billete a devolver")
         cliente_tmp = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
-        cliente_num_billete = input("Introduzca el numero de tu billete: ")
+        cliente_num_billete = int(input("Introduzca el numero de tu billete: "))
 
         print(bus_seleccionado.DevolverBilletes(cliente_tmp, cliente_num_billete))
 
