@@ -87,7 +87,12 @@ while accion_usuario != 0:
 
         print("\nIntroduzca el nombre y apellido del titular del billete a devolver")
         cliente_tmp = creacion_cliente((input("Nombre: ")), (input("Apellido: ")))
-        cliente_num_billete = int(input("Introduzca el numero de tu billete: "))
+        cliente_num_billete = input("Introduzca el numero de tu billete: ")
+        while cliente_num_billete.isdigit() == False:
+            cliente_num_billete = input("\033[31mIntroduce un numero entero válido: \033[0m")
+        cliente_num_billete = int(cliente_num_billete)
+        
+        
 
         print(bus_seleccionado.DevolverBilletes(cliente_tmp, cliente_num_billete))
 
