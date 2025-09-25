@@ -137,7 +137,7 @@ while accion_usuario != 0:
             
         if capacidad_bus.isdigit() == True and destino_bus != "": 
             creacion_nuevo_bus(buses, capacidad_bus, destino_bus)
-            print("\033[32mSe creo el bus correctamente \033[0m")
+            print("\033[32mSe creo el bus correctamente \033[0m\n")
 
 
 print("\033[36mHasta luego muchas gracias por escogernos\033[0m")
