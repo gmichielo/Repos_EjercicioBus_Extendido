@@ -16,12 +16,13 @@ def mostrar_menu_registro():
     return menu
 
 def mostrar_menu_acciones():
-    menu = "\033[33m1.- Venta de billetes.\n" \
-    + "2.- Devolución de billetes.\n" \
-    + "3.- Estado de la venta.\n" \
-    + "4.- Añadir bus.\n" \
-    + "5.- Cerrar sesion.\n" \    
-    + "0.- Apagar programa.\033[0m\n"
+    menu = ("\033[33m1.- Venta de billetes.\n"
+        "2.- Devolución de billetes.\n"
+        "3.- Estado de la venta.\n"
+        "4.- Añadir bus.\n"
+        "5.- Cerrar sesion.\n"
+        "0.- Apagar programa.\033[0m\n"
+    )
     return menu
 
 def nuevo_registro(usuario, contrasenya, correo):
@@ -100,7 +101,7 @@ while programa_encendido:
         except ValueError:
             print("\033[31mOpción inválida, escribe un número.\033[0m")
             continue
-        if accion_usuario > 4 or accion_usuario < 0:
+        if accion_usuario > 5 or accion_usuario < 0:
             print("\033[31mOpción inválida, seleccione un numero del menu.\033[0m")
             continue
 
@@ -194,11 +195,11 @@ while programa_encendido:
                 creacion_nuevo_bus(buses, capacidad_bus, destino_bus)
                 print("\033[32mSe creo el bus correctamente \033[0m\n")
         
-            elif accion_usuario == 5:
-                print("\033[33mSesión cerrada. Volviendo al inicio...\033[0m")
-                logueado = False  # salgo de este bucle y vuelvo a registro/login
+        elif accion_usuario == 5:
+            print("\033[33mSesión cerrada. Volviendo al inicio...\033[0m")
+            logueado = False  # salgo de este bucle y vuelvo a registro/login
 
-            elif accion_usuario == 0:
-                print("\033[36mApagando programa... Gracias por escogernos!\033[0m")
-                logueado = False
-                programa_encendido = False
+        elif accion_usuario == 0:
+            print("\033[36mApagando programa... Gracias por escogernos!\033[0m")
+            logueado = False
+            programa_encendido = False
