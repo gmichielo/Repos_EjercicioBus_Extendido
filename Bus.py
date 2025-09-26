@@ -5,6 +5,7 @@ class Bus:
         self.__bus_id = bus_id
         self.__capacidad = capacidad
         self.__billetes = []
+        
         self.__destino = destino
         
     def SetBusId(self, bus_id):
