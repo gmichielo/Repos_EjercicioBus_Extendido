@@ -76,7 +76,6 @@ while programa_encendido:
             continue
 
         if op == 1:
-            # registrar
             usuario = input("Nuevo usuario: ").strip()
             contrasenya = input("Contraseña: ").strip()
             correo = input("Correo de empresa: ").strip()
@@ -86,7 +85,6 @@ while programa_encendido:
             except ValueError as e:
                 print(f"\033[31m{e}\033[0m")
         elif op == 2:
-            # login
             usuario = input("Usuario: ").strip()
             contrasenya = input("Contraseña: ").strip()
             logueado = iniciar_sesion(usuario, contrasenya)
