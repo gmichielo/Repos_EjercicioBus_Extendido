@@ -2,7 +2,7 @@ from Bus import Bus
 from Cliente import Cliente
 from Billete import Billete
 from Registro import Registro
-
+#
 buses = []
 registros = {}
 accion_usuario = 1
